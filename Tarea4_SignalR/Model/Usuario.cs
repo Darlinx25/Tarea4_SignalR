@@ -13,13 +13,11 @@ public class Usuario
 
     public Boolean EsUsuarioValido()
     {
-        //TODO implementar lógica de autenticacion
         return true;
     }
 
     public Boolean NecesitarVerificacion()
     {
-        //TODO implmentar lógica de verificación
         return true; 
     }
 

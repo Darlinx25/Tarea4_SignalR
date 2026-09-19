@@ -1,7 +1,12 @@
+using Microsoft.AspNetCore.SignalR;
+using Tarea4_SignalR.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -22,5 +27,13 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
     .WithStaticAssets();
+
+app.MapHub<LoginHub>("/loginHub");
+
+app.MapGet("/verificar/usuario/{connectionId}", async (string connectionId, IHubContext<LoginHub> hubContext, ILogger<LoginHub> logger) =>
+{
+    logger.LogInformation($"Notificando al cliente {connectionId}");
+    await hubContext.Clients.Client(connectionId).SendAsync("VerificacionOk", connectionId);
+});
 
 app.Run();
