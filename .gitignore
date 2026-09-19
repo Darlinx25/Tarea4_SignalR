@@ -1,0 +1,23 @@
+# .NET build
+bin/
+obj/
+
+# Archivos de usuario / solución
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# JetBrains Rider
+.idea/
+.externalToolBuilders/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
