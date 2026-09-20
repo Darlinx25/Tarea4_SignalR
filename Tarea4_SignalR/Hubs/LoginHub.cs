@@ -17,8 +17,9 @@ public class LoginHub : Hub
         if (usuario.NecesitarVerificacion())
         {
             string usrId = Context.ConnectionId;
-            _logger.LogInformation($"**** Copiar la siguiente url para probar");
-            _logger.LogInformation($"curl https://localhost:7097/verificar/usuario/{usrId}");
+            var http = Context.GetHttpContext();
+            string url = $"{http?.Request.Scheme}://{http?.Request.Host}/verificar/usuario/{usrId}";
+            _logger.LogInformation($"Simulá hacer click en: {url}");
             
         }
     }

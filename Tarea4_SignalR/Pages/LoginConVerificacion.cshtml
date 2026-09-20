@@ -79,12 +79,6 @@
             animation: spin 1s linear infinite;
             margin-right: 0.5rem;
         }
-        <!-- @@keyframes es un elementos de css, sin embargo como empieza con un @@, el compilador
-        asume que es un componenete de Razor y da error porque lo desconoce,
-        , por lo tanto tenemos que usar doble @@
-        La primer @@ actua como carcter de escape indicando que lo que viene a continuación
-        no se interprete -->
-
         @@keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -111,7 +105,7 @@
     </div>
 
     <script>
-        var connection = new signalR.HubConnectionBuilder().withUrl("/login").build();
+        var connection = new signalR.HubConnectionBuilder().withUrl("/loginHub").build();
         connection.start().then(function () {
             //en este ejemplo no hago nada cuando me conecto
         }).catch(function (err) {
@@ -121,7 +115,7 @@
         //Este metodo se ejecuta cuando se invoca desde el Servidor
         connection.on("VerificacionOk", function (usuario) {
             console.info("Me invocaron desde el servidor, usuario:" + usuario);
-            window.location.href = "https://localhost:7269/PaginaBienvenida";
+            window.location.href = "/PaginaBienvenida";
         });
         
 

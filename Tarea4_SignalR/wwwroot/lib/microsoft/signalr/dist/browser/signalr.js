@@ -55,12 +55,7 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-    
-    
 var __webpack_exports__ = {};
-
-var connection = new signalR.HubConnectionBuilder().withUrl("/loginHub").build();
-
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
